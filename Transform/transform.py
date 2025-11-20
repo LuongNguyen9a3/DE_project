@@ -46,3 +46,16 @@ def transf_wh(**context):
     after = len(df)
     if before != after:
         print(f'Removed {before - after} duplicate rows.')
+
+        # Daily Averages:
+    df = df.set_index('Formatted Date')
+
+    daily_avg = df.resample('D').mean()[[
+        'Temperature (C)',
+        'Humidity',
+        'Wind Speed (km/h)'
+    ]]
+
+    daily_avg = daily_avg.reset_index()
+
+    context('ti').xcom_push(key='daily_avg', value=daily_avg.to_json())
