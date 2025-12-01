@@ -9,7 +9,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.trigger_rule import TriggerRule
 
-RAW_DATA_DIR = "/home/thuypham/airflow/datasets"
+RAW_DATA_DIR = "/home/vboxuser/airflow/datasets"
 
 RAW_DATA_PATH = os.path.join(RAW_DATA_DIR, "weather_data.csv")
 
